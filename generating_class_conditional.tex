@@ -182,19 +182,19 @@ Also, a learning rate $\eta$ and a decay rate $\lambda$ are included to control 
 We incorporate memory consolidation designs from \cite{pld} to the fast weights model \cite{fw}.
 We keep the fast weights setup and the weights transferring mechanism unchanged.
 However, our fast weights uses a learning rate of $\eta$ $=1.0$ instead of $\eta$ $=0.5$.
-We also substitute the original exponential decay function $\lambda$ $=0.95^t$ to a power-law decay function $\prod_{t=1}^{t=\tau} t^{-0.5}$ where $\tau$ is the number of time steps elapsed since the initial storage of a specific memory. 
+We also substitute the original exponential decay function $\lambda$ $=0.95^t$ to the product of a power-law decay function $\prod_{t=\tau}^{t=1} t^{-0.5}$ where $\tau$ is the number of time steps elapsed since the initial storage of a specific memory. 
  
 
 \newpage 
 \mysection{Decay Functions Comparisons}
  \vspace{-0.05cm}
 
-Figure below shows that our power-law decay function decays much faster than the original exponential decay function. 
+Figure below shows that the product of power-law decay functions decays much faster than the original exponential decay function. 
 We believe that because new information is stored in a greater portion than before, the fast weights has to decay its existing memory quicker to prevent memory interference. 
 This design also forces the RNN to learn patterns quicker from the fast weights since existing information is quickly removed.
 
 \vspace{-0.5in}
-\myfig{figures/functions}{1}
+\myfig{figures/decays}{1}
 \vspace{-1.0in}
 \mycaption{Decay Functions Comparisons}
 \vspace{0.5in}
