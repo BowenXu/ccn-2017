@@ -9,7 +9,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \pdfminorversion=4
-\documentclass[landscape,a0b,final,a4resizeable]{include/a0poster}
+\documentclass[portrait,a0b,final,a4resizeable]{include/a0poster}
 
 
 \usepackage{multicol}
@@ -50,11 +50,9 @@
 \newcommand{\cat}{^{\text{\textnormal{c}}}}
 
 \usepackage{dsfont}
+\usepackage{apacite}
 
 \input{include/preamble.sty}
-%\input{include/preamble2.sty}
-
-%\usepackage{tabularx}
 
 \input{include/jlposter.tex}
 
@@ -89,66 +87,23 @@
 \begin{minipage}[c][][b]{\logowidth}
 %  \begin{center}
     \vspace{-.18in}
-    \includegraphics[width=8cm,trim=9em 0em 9em 0em, clip]{badges/toronto}
+    \includegraphics[width=7cm,trim=9em 0em 9em 0em, clip]{badges/toronto}
    	% \hspace{35cm}
-      \includegraphics{badges/uot_text.png}
+     \includegraphics[width=7cm]{badges/uot_text.png}
 \end{minipage}
-% \hspace{0.3cm}
-% %
-% %
-% %%% Another Logo
-% \begin{minipage}[c][][b]{\logowidth}
-% %  \begin{center}
-%     \vspace{.978in}
-%     \includegraphics[width=6cm]{badges/cambridgecrest}
-%     \includegraphics[width=6cm]{badges/unicamtext.pdf}
-% %another 
-% %  \end{center}
-% \end{minipage}
-%
 %
 %%% Title
 \hspace{-5.0cm}
 \begin{minipage}[c][9cm][c]{0.94\textwidth}
   \begin{center}
-    \vspace{3.5cm}
-    {\sffamily \VeryHuge \textbf{Generating Class-conditional Images\\\vspace{5.0mm} with Gradient-based Inference}}\\[10mm]
-    {\huge\sffamily \Huge Bowen Xu, David Acuna, David Duvenaud\\[7.5mm]
-    \Large \texttt{\{xubo3, davidj, duvenaud\}@cs.toronto.edu}
+    \vspace{1.5cm}
+    {\sffamily \Huge \textbf{Fast Weights Using Improved Memory Consolidation Designs}}\\[7.5mm]
+    {\huge\sffamily Bowen Xu$^1$, Jimmy Ba$^2$, Richard Zemel$^1$\\[7.5mm]
+  	\Large\texttt{Department of Computer Science, University of Toronto$^1$} \\[5mm]
+  	\Large\texttt{Department of Electrical \& Computer Engineering, University of Toronto$^2$}
     }
   \end{center}
 \end{minipage}
-%
-%
-% % Harvard
-% \begin{minipage}[c][][b]{\logowidth}
-%   \begin{flushright}
-% %    \includegraphics[width=6cm,angle=0]{badges/cambridgecrest}
-% %    \vspace{.1in}
-% %    \includegraphics[width=6cm,angle=0]{unicamtext.pdf}
-%     \includegraphics[width=8cm,trim=3.2em 0em 3.2em 3em, clip]{badges/harvard}
-% %University of Cambridge 
-%   \end{flushright}
-% \end{minipage}
-% %
-% \hspace{1cm}
-% 
-% \begin{minipage}[c][][b]{\logowidth}
-% %    \includegraphics[width=6cm,angle=0]{badges/cambridgecrest}
-% %    \vspace{.1in}
-% %    \includegraphics[width=6cm,angle=0]{unicamtext.pdf}
-%     \includegraphics[width=8cm,trim=0em 0em 0em 0em, clip]{badges/uni-freiburg}
-% \end{minipage}
-%
-% \hspace{1cm}
-% % 
-% \begin{minipage}[c][][b]{\logowidth}
-% %    \includegraphics[width=6cm,angle=0]{badges/cambridgecrest}
-% %    \vspace{.1in}
-% %    \includegraphics[width=6cm,angle=0]{unicamtext.pdf}
-%     \includegraphics[width=8cm,trim=0em 0em 0em 0em, clip]{badges/oxford}
-% \end{minipage}
-
 }
 \end{pcolumn}
 \end{center}
@@ -166,228 +121,162 @@
 %%% Begin of Multicols-Enviroment
 \begin{multicols}{3}
 % 
-\mysection{Main idea}
+\mysection{Abstract}
 %
 % 
 \vspace{0.2in}
 % 
-% \begin{minipage}[c]{1\columnwidth}
-\begin{itemize}
-	\item Gradient descent on images is a promising approach to generating class-conditional images.
-	\item This method produces high-resolution class-conditional images with crisp details and coherent overall structure.
-	 %  often produces unrepresentative super-stimuli.
-	\item Even better, we sample from $p(\textnormal{image} | \textnormal{class})$ using gradient-based MCMC methods.
-	\item Our approach produces realistic and content-diverse class-conditional images.
-	% \item The number of architecture-dependent hyperparameters changes with different architectures.
-	\item Our method removes the need for \emph{ad-hoc} tweaks to the objective when longer iterations are introduced.
-\end{itemize}
-% \end{minipage}
-% \begin{minipage}[c]{0.35\columnwidth}
-% \begin{centering}
-% \begin{tabular}{c}
-% \input{tables/architecture-comparison} \\
-% %\textcolor{darkblue}{ [Rasmussen, 1999]}
-% \end{tabular}
-% \end{centering}
-% \end{minipage}
+{
+\Large\sffamily
+Storing better quality and greater amount of memory has been a difficult challenge for deep learning.
+While the current artificial neural networks excel at tasks such as regression and classification, they fail to perform equally well on representing variables and storing data over long time.
+We introduce an enhanced fast weights model that includes robust memory consolidation designs into the existing memory transformation mechanisms.
+We show that our model comes with no additional costs, converges faster, and out-performs the original fast weights model on the associative retrieval tasks.
+}
+\begin{quote}
+\vspace{0.2in}
+\textbf{Keywords:} 
+Fast Weights; Memory Consolidation; Memory Transformation; Deep Learning; Associative Retrieval
+\end{quote}
 
 \vspace{0.5in}
 
-\mysection{Previous Work}
+\mysection{Background}
+%
+Recently, Benna and Fusi have demonstrated that the combination of a power-law memory decay with a fast new memory adaptability maximizes both the memory storage and lifetime (2016).
+Their method treats each piece of memory as random and uncorrelated, and maximizes the signal to noise ratio (SNR) of all the stored memories \cite{pld}.
+Since Benna and Fusi use a power-law decay function which has the form of \emph{$t^{-\gamma}$}, $\gamma > 0.5$ is required for the function to converge (2016).
+In addition, Benna and Fusi also suggest fast adaptability for the memory system which implies that the learning rate for new information should be exactly $1.0$ (2016).
 % 
-% approach, due to Nguyen et.\ al.\ \cite{Nguyen2016}, 
-A previous approach by Nguyen et.\ al.\ \cite{Nguyen2016} uses gradient-based optimization of images to do approximate 
-% \emph{maximum a posteriori probability}
- MAP estimation, synthesizing large (227 x 227) class-conditional images.\\
-% \begin{minipage}
+\vspace{0.25in}
+\begin{align}
+    &w_a(t) \equiv \sum_{t^{'} < t} \Delta w_a(t') r(t-t')
+    \label{eq:memory} \\
+    &S_{t^{'}}(t) \equiv \frac{1}{N}\left<\sum_{a=1}^N w_a(t)\Delta w_a(t') \right>
+    \label{eq:signal} \\
+    &N^2_{t^{'}}(t) \equiv \left<\frac{1}{N^2}\left(\sum_{a=1}^N w_a(t)\Delta w_a(t') \right)^2 \right> - S^2_{t^{'}}(t)
+    \label{eq:variance} \\
+    &S / N(t - t') = \sqrt{\frac{N r^2(t - t')}{\sum_{t" < t, t" \neq t'} r^2(t- t")}}
+    \label{eq:snr}\\
+    &\sum_{t" < t, t" \neq t'} r^2(t- t") \approx \int_{1}^{\infty} r^2(t) dt 
+    \label{eq:decay}
+\end{align}
+\vspace{0.25in}
 
-\begin{center} 
-  \centering
-  \includegraphics{figures/img}
-  % \caption{Architecture using the DGN and DNN.}
-  \label{fig:net}
-\end{center}
-
-\begin{itemize}
-\item An initial image is specified by a random vector $z \thicksim \mathcal{N}(0, I)$.
- \item This vector is passed through a pre-trained image generation network $g_\theta(z)$.
-\item The generated image is fed into a pre-trained classification network.
- \item The latent vector is then optimized using backpropagation.
- % according to the gradient of the chosen class probability with respect to the image, multiplied by the gradient of the image with respect to the latent vector, using backpropagation.
-\end{itemize}
+Recent advances in deep learning \cite{dnc, fw} have also shown that the use of an external memory with the artificial neural networks can significantly improve their abilities to retain information.
+Ba et.\ al.\ devise a bidirectional memory transformation system.
+Knowledge is not only transferred from the fast weights to the memory cells of a Recurrent Neural Network (RNN) through its hidden vector update but also transitioned from the memory cells to the fast weights as it is updated using the latest hidden vector at each time step.
+Also, a learning rate $\eta$ and a decay rate $\lambda$ are included to control how much the fast weights should store new knowledge versus how quickly it should forget previous knowledge.
+%
+\vspace{0.25in}
+\begin{align}
+    &A(t) = \lambda A(t-1) + \eta h(t) h(t)^T
+    \label{eq:external_memory} \\
+    &h_s(t+1) = f(LN(Wh(t) + Cx(t) + A(t)h_{s-1}(t+1)))
+    \label{eq:hidden_update} \\
+    &h(t+1) = h_s(t+1) \label{eq:hidden_assign}
+\end{align}
 \vspace{1cm}
-\mysection{Our contribution}
-We use gradient-based MCMC methods to approximately sample from the class-conditional posterior:\\
-\begin{equation*}
-    \hat z \thicksim p(z|\textnormal{class}) \propto p(\textnormal{class} | g_\theta(z)) p(z) \qquad \textnormal{where} \qquad p(z) = \mathcal{N}(0, I)
-    %\qquad \textnormal{where} \qquad p(z | class) = p(g_\theta(z) | class)
-    % \label{eq:sampling}
-\end{equation*}
-\linebreak
-and $p(\textnormal{class} | g_\theta(z))$ is the classification network.\\
 
-We adopt:
-\begin{itemize}
-\item Hamiltonian Monte Carlo (HMC) 
-\item Metropolis-adjusted-Langevin-algorithm (MALA) 
-\end{itemize}
-% \subsection*{Algorithm}
-% \begin{algorithm}[H]
-% % \setstretch{1.02}
-%     % \caption{MAP with Clipping\cite{Nguyen2016}} %\label{evalgd}
-%     \label{alg:activation_maximization}
-%     \begin{algorithmic}[1]
-%          \State $z \thicksim N(0,I)$
-%          \For{ iterations }
-%          \State $g= \nabla log(p(\textnormal{class}|z)p(z))$
-%          \State \textbf{$z = z+\alpha g$}
-%          \State $z= clip(z)$
-%           \EndFor
-%       \end{algorithmic}
-% \end{algorithm}
-% \vspace{-0.05in}
+\mysection{Our contribution}
+We incorporate memory consolidation designs from \cite{pld} to the fast weights model \cite{fw}.
+We keep the fast weights setup and the weights transferring mechanism unchanged.
+However, our fast weights uses a learning rate of $\eta$ $=1.0$ instead of $\eta$ $=0.5$.
+We also substitute the original exponential decay function $\lambda$ $=0.95^t$ to a power-law decay function $\prod_{t=1}^{t=\tau} t^{-0.5}$ where $\tau$ is the number of time steps elapsed since the initial storage of a specific memory. 
  
 
 \newpage 
 
-\mysection{Experiments and Results}
+\mysection{Decay Functions Comparison}
  \vspace{-0.05cm}
+
+Figure below shows that our power-law decay function decays much faster than the original exponential decay function. 
+We believe that because new information is stored in a greater portion than before, the fast weights has to decay its existing memory quicker to prevent memory interference. 
+This design also forces the RNN to learn patterns quicker from the fast weights since existing information is quickly removed.
+
+\vspace{-0.75in}
 \begin{align*}
-% \input{figures/semicylinder}\label{fig:cylinder}
-% \begin{figure}[h]
-  % \centering
-  %\includegraphics[width=\textwidth]{ComparisonImagebyImage_wo_clipping}
-  \hspace{-2.0cm}
-  \includegraphics[width=32cm,keepaspectratio=false]{figures/comparison_final_transpose}
-  % [scale=0.5725]
-  % \caption{Images generated with MAP, MALA, and HMC.}
-  % \label{fig:robustness}
+  \includegraphics[width=\columnwidth,keepaspectratio=False]{figures/functions}
 \end{align*}
 % 
-\mysection{Automatically Evaluating Image Quality}
-
-We use a discriminator \cite{Radford2015}, trained on ImageNet, to output the probability of an image being natural versus synthesized.\\
+\mysection{Experiments and Results}
+We evaluate three RNN models on the associative retrieval tasks on three difficulty levels.
+Our data consists of sequences of key-value pairs concatenated with two question marks and one query key.
+The keys are lower case characters from the English alphabet chosen randomly without replacement, and the values are digits among 0 to 9 chosen randomly with replacement. \\
 
 \begin{minipage}[c]{1\columnwidth}
         \centering
-        \resizebox{\textwidth}{!}{
-        \begin{tabular}{ ccccc}
-            %\hline
-              & \makecell{MAP with\\ class-specific regularization}  & \makecell{MALA with\\ class-specific regularization} & MALA & HMC\\
-            \midrule 
-            Average log-probability & -6.00 & {\bf -5.53} & -9.79 & -7.96
+        \resizebox{!}{!}{
+		\begin{tabular}{cc}
+		Input String & \makecell{Target} \\
+		\midrule
+		c9k8j3f1??c & 9 \\
+		\midrule
+		j0a5s5z2??a & 5 \\
 		\end{tabular}}
-        % \caption{Average log-probability of synthetic images being real.}
-        \label{table:dt_test}
+		\label{table:examples}
+\end{minipage}
+\vspace{0.25in}
+
+Our training data contains $100,000$ sequences and our testing data contains $50,000$ sequences.
+The difficulty levels are three key-value pairs (K = $3$), four key-value pairs (K = $4$), and twenty-six key-value pairs (K = $26$).
+The following models are evaluated on correctly predicting the associated value of the query key: a vanilla RNN (CONTROL), the original fast weights model (RNN-LN-FW), and the improved fast weights model (RNN-LN-FW2).
+All RNN models contain a single hidden layer with $50$ hidden units and are trained with $100$ iterations.\\
+
+\begin{minipage}[c]{1\columnwidth}
+        \centering
+        \resizebox{!}{!}{
+		\begin{tabular}{cccc}
+		Model & \makecell{K = $3$} & \makecell{K = $4$} & \makecell{K = $26$} \\
+		\midrule
+		RNN-LN-FW2 & {$\bf 99.74\%$} & {$\bf 100\%$} & {$\bf 100\%$} \\
+		\midrule
+		RNN-LN-FW & $99.5\%$ & $99.71\%$ & $94.75\%$ \\
+		\midrule
+		\makecell{CONTROL} & $42.71\%$ & $34.49\%$ & $12.07\%$\\
+		\end{tabular}}
+		\label{table:compare_methods}
 \end{minipage}
 
-
+\vspace{0.125in}
+\begin{align*}
+\hspace{-0.475in}
+  \includegraphics[width=30cm,keepaspectratio=False]{figures/k26}
+\end{align*}
 
 \newpage
-\mysection{Diversity of Image Contents}
+\mysection{Hidden Activations Visualization}
 \vspace{-0.5cm}
 \begin{align*}
-% \input{figures/semicylinder}\label{fig:cylinder}
-% \begin{figure}[h]
-% 
-  %\includegraphics[width=\textwidth]{ComparisonImagebyImage_wo_clipping}
-   % \hspace{-1.0cm}
-   % \hspace{0.8cm}
-  \includegraphics[width=33cm,keepaspectratio=false]{figures/moreRepresentative}
-  % [scale=0.5725]
-  % \caption{Images generated with MAP, MALA, and HMC.}
-  % \label{fig:robustness}
+\hspace{-0.475in}
+\includegraphics[width=30cm,keepaspectratio=False]{figures/Full_Comparison_RNN-LN-FW2_sample1}
+\end{align*}
+
+\vspace{-1.25in}
+\begin{align*}
+\hspace{-0.475in}
+\includegraphics[width=30cm,keepaspectratio=False]{figures/Full_Comparison_RNN-LN-FW_sample3}
 \end{align*}
 
 
-
-\mysection{Advantages and Limitations}
-\begin{itemize}
-	\setlength\itemsep{0.4em}
-	\item[$+$] Produces high-resolution images with crisp details and coherent overall structure.
-	\item[$+$] Generates more content-diverse images.
-	\item[$+$] Removes the need for class-specific regularization when longer iterations are introduced.
-	% \item[$+$] If longer iterations are introduced clipping constraints are not required.
-	% \item[$-$] Slow convergence for high-dimensional data spaces.
-	\item[$-$] Small step sizes and longer iterations are required.
-\end{itemize}
-% \begin{minipage}[c]{0.95\columnwidth}
-% %\begin{table}[h!]
-% %\caption{{\small \label{tab:nn_error}}}
-% %\label{tbl:nn_nmse}
-% \input{tables/mcmc-table.tex}
- 
-
-
+\vspace{1.cm}
+\mysection{Conclusion and Future Work}
+We introduce an enhanced fast weights model by incorporating memory consolidation designs from \cite{pld}.
+We show that our model works better on the associative retrieval tasks and converges faster.
+Our next direction is to evaluate the models on more difficult tasks such as sorting and repeated-copying.
+We also intend to investigate other decay functions for the fast weights model.
 
 \vspace{1.cm}
-\mysection{Future Work}
-	\begin{itemize}
-		\setlength\itemsep{0.4em}
-		\item Use the Hamiltonian Variational Inference (HVI) model \cite{2014arXiv1410.6460S}.
-		\item Generate images from text.
-		\item Generate other media such as sound and video.
- 	\end{itemize}
-% %\begin{figure}[t!]
-% 	\centering
-% %	\begin{subfigure}[]{0.3\textwidth}
-% \begin{tabular}{cc}
-% \includegraphics[width=0.45\columnwidth]{figures/mnist.pdf} &
-% \includegraphics[width=0.45\columnwidth]{figures/cifar10.pdf} \\
-% MNIST &  CIFAR-10
-% \end{tabular}		
 
-
-% \begin{tabular}{c}
-% 		\includegraphics[width=0.45\columnwidth]{figures/fevals_per_layer.pdf} \\
-% Architectures searched
-% \end{tabular}
-		
-%		\label{fig:proparchs}
-%	\end{subfigure}
-%	\caption{Bayesian optimization results using the arc kernel.}
-%	\label{fig:arcbo}
-%\vspace{-0.3cm}
-%\end{figure}
-
-\vspace{1.cm}
-% \hspace{-1.0cm}
-
-\mysection{Bibliography}
+\mysection{References}
 \small
 \begingroup
 \renewcommand{\section}[2]{}%
 \bibliography{bib}
 \endgroup
-\bibliographystyle{ieeetr}
+\bibliographystyle{apacite}
 
-\vspace{1.5cm}
- \begin{center}
-\begin{minipage}[c]{0.2\columnwidth}
-  \includegraphics[width=8cm]{photos/xu}
-  \captionsetup{labelformat=empty}
-  \captionof{figure}{Bowen Xu}
-\end{minipage}
-\hspace{0.5cm}
-\begin{minipage}[c]{0.2\columnwidth}
-  \includegraphics[width=8cm]{photos/acuna}
-  \captionsetup{labelformat=empty}
-  \captionof{figure}{David Acuna}
-\end{minipage}
-\hspace{0.5cm}
-\begin{minipage}[c]{0.2\columnwidth}
-  \includegraphics[width=8cm]{photos/duvenaud.png}
-  \captionsetup{labelformat=empty}
-  \captionof{figure}{David Duvenaud}
-\end{minipage}
-\end{center}
  
-%\paragraph{Code}
-%Code available at \texttt{http://???}
-%
-%Paper available at \texttt{http://???}
- 
-
 \end{multicols}
 \end{poster}
 \end{document}

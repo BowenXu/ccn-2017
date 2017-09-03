@@ -7,7 +7,7 @@
 %% conditions of the LaTeX Project Public License, either version 1.2
 %% of this license or (at your option) any later version.
 %% The latest version of this license is in
-%%    http://www.latex-project.org/lppl.txt
+%% ï¿½ ï¿½http://www.latex-project.org/lppl.txt
 %% and version 1.2 or later is part of all distributions of LaTeX
 %% version 1999/12/01 or later.
 %%
@@ -89,9 +89,9 @@
 
 \ifanullb
    \setlength{\paperwidth}{119cm}
-   \setlength{\paperheight}{87cm}
+   \setlength{\paperheight}{89cm}
    \setlength{\textwidth}{114cm}
-   \setlength{\textheight}{87cm}
+   \setlength{\textheight}{84cm}
 \else\ifanull
         \setlength{\paperwidth}{118.82cm}
         \setlength{\paperheight}{83.96cm}
