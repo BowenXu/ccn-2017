@@ -178,7 +178,7 @@ Also, a learning rate $\eta$ and a decay rate $\lambda$ are included to control 
 \end{align}
 \vspace{1cm}
 
-\mysection{Our contribution}
+\mysection{Our Contribution}
 We incorporate memory consolidation designs from \cite{pld} to the fast weights model \cite{fw}.
 We keep the fast weights setup and the weights transferring mechanism unchanged.
 However, our fast weights uses a learning rate of $\eta$ $=1.0$ instead of $\eta$ $=0.5$.
@@ -186,7 +186,6 @@ We also substitute the original exponential decay function $\lambda$ $=0.95^t$ t
  
 
 \newpage 
-
 \mysection{Decay Functions Comparison}
  \vspace{-0.05cm}
 
@@ -196,7 +195,7 @@ This design also forces the RNN to learn patterns quicker from the fast weights 
 
 \vspace{-0.75in}
 \begin{align*}
-  \includegraphics[width=\columnwidth,keepaspectratio=False]{figures/functions}
+ \includegraphics[width=\columnwidth,keepaspectratio=False]{figures/functions}
 \end{align*}
 % 
 \mysection{Experiments and Results}
@@ -238,11 +237,15 @@ All RNN models contain a single hidden layer with $50$ hidden units and are trai
 		\label{table:compare_methods}
 \end{minipage}
 
-\vspace{0.125in}
-\begin{align*}
-\hspace{-0.475in}
-  \includegraphics[width=30cm,keepaspectratio=False]{figures/k26}
-\end{align*}
+\vspace{1.25in}
+\mycaption{Testing Accuracy K=26}
+\vspace{-1.25in}
+\myfig{figures/k26}{1}
+
+%\begin{align*}
+%\hspace{-0.475in}
+%  \includegraphics[width=30cm,keepaspectratio=False]{figures/k26}
+%\end{align*}
 
 \newpage
 \mysection{Hidden Activations Visualization}
