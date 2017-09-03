@@ -186,17 +186,22 @@ We also substitute the original exponential decay function $\lambda$ $=0.95^t$ t
  
 
 \newpage 
-\mysection{Decay Functions Comparison}
+\mysection{Decay Functions Comparisons}
  \vspace{-0.05cm}
 
 Figure below shows that our power-law decay function decays much faster than the original exponential decay function. 
 We believe that because new information is stored in a greater portion than before, the fast weights has to decay its existing memory quicker to prevent memory interference. 
 This design also forces the RNN to learn patterns quicker from the fast weights since existing information is quickly removed.
 
-\vspace{-0.75in}
-\begin{align*}
- \includegraphics[width=\columnwidth,keepaspectratio=False]{figures/functions}
-\end{align*}
+\vspace{-0.5in}
+\myfig{figures/functions}{1}
+\vspace{-1.0in}
+\mycaption{Decay Functions Comparisons}
+\vspace{0.5in}
+%\begin{align*}
+ %\includegraphics[width=\columnwidth,keepaspectratio=False]{figures/functions}
+%\end{align*}
+
 % 
 \mysection{Experiments and Results}
 We evaluate three RNN models on the associative retrieval tasks on three difficulty levels.
@@ -222,6 +227,7 @@ The difficulty levels are three key-value pairs (K = $3$), four key-value pairs 
 The following models are evaluated on correctly predicting the associated value of the query key: a vanilla RNN (CONTROL), the original fast weights model (RNN-LN-FW), and the improved fast weights model (RNN-LN-FW2).
 All RNN models contain a single hidden layer with $50$ hidden units and are trained with $100$ iterations.\\
 
+\mycaptiontable{Testing Accuracy of Different Models}
 \begin{minipage}[c]{1\columnwidth}
         \centering
         \resizebox{!}{!}{
@@ -237,10 +243,10 @@ All RNN models contain a single hidden layer with $50$ hidden units and are trai
 		\label{table:compare_methods}
 \end{minipage}
 
-\vspace{1.25in}
-\mycaption{Testing Accuracy K=26}
-\vspace{-1.25in}
+\vspace{-.25in}
 \myfig{figures/k26}{1}
+\vspace{-1.0in}
+\mycaption{Testing Accuracy K = 26}
 
 %\begin{align*}
 %\hspace{-0.475in}
@@ -254,13 +260,16 @@ All RNN models contain a single hidden layer with $50$ hidden units and are trai
 \hspace{-0.475in}
 \includegraphics[width=30cm,keepaspectratio=False]{figures/Full_Comparison_RNN-LN-FW2_sample1}
 \end{align*}
-
 \vspace{-1.25in}
+\mycaption{Hidden Activations for RNN-LN-FW2 K = 26}
+
+\vspace{-.5in}
 \begin{align*}
 \hspace{-0.475in}
 \includegraphics[width=30cm,keepaspectratio=False]{figures/Full_Comparison_RNN-LN-FW_sample3}
 \end{align*}
-
+\vspace{-1.25in}
+\mycaption{Hidden Activations for RNN-LN-FW K = 26}
 
 \vspace{1.cm}
 \mysection{Conclusion and Future Work}

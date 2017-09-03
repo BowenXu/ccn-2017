@@ -30,10 +30,22 @@
 \newcommand{\mycaption}[1]{
   \vspace{0.5cm}
   \begin{quote}
+  \center
     {{\sc Figure} \arabic{figure}: #1}
   \end{quote}
   \vspace{1cm}
   \stepcounter{figure}
+}
+
+\setcounter{table}{1}
+\newcommand{\mycaptiontable}[1]{
+  \vspace{0.5cm}
+  \begin{quote}
+  \center
+    {{\sc Table} \arabic{table}: #1}
+  \end{quote}
+  \vspace{1cm}
+  \stepcounter{table}
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
